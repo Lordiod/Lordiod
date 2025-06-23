@@ -13,13 +13,14 @@
 ### ⚙️ Tech Stack
 
 ```
-Languages:       Python, JavaScript, HTML, CSS  
-Frameworks:      Flask (NMUstudenthousing), customtkinter (ModelMaster GUI)  
-ML Libraries:    scikit-learn, pandas, matplotlib, numpy  
-GUI Frameworks:  tkinter, customtkinter  
-Tools & Stuff:   Git, VSCode, SQLite, Postman, ChatGPT, pickle  
-Currently into:  AI ✨ | Backend 🚀 | Web Dev 🌐 | Debugging under pressure 💥  
+Languages:       Python, JavaScript, HTML, CSS
 ```
+``` Frameworks:      Flask (NMUstudenthousing), customtkinter (ModelMaster GUI)  ```
+``` ML Libraries:    scikit-learn, pandas, matplotlib, numpy  ```
+``` GUI Frameworks:  tkinter, customtkinter  ```
+``` Tools & Stuff:   Git, VSCode, SQLite, Postman, ChatGPT, pickle  ```
+```Currently into:  AI ✨ | Backend 🚀 | Web Dev 🌐 | Debugging under pressure 💥  ```
+
 
 ---
 
@@ -39,7 +40,7 @@ Currently into:  AI ✨ | Backend 🚀 | Web Dev 🌐 | Debugging under pressure
 ---
 
 ### 📫 Contact Me:
-- Email: `youssefyasser.dev@proton.me` (business inquiries & memes welcome)
+- Email: `yyyabed123@gmail.com` (business inquiries & memes welcome)
 - LinkedIn: [linkedin.com/in/youssef-yasser](https://linkedin.com/in/youssef-yasser)
 - Discord: `lildiabloh`
 - Status: Probably online, definitely distracted.
@@ -54,11 +55,4 @@ git commit -m "final_final_real_final_v2_FIXED"
 
 ---
 
-<!-- Secret section -->
-<details>
-  <summary>🧠 Click for 3 AIs, a backend dev, and a plot twist</summary>
-  You opened this. You’re one of us now. Welcome to the code cult.
-</details>
-
-
-![Profile Views](https://komarev.com/ghpvc/?username=Lordiod&color=green)
+![Profile Views](https://komarev.com/ghpvc/?username=Lordiod&color=blue)
