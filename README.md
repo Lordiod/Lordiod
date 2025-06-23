@@ -15,11 +15,21 @@
 ```
 Languages:       Python, JavaScript, HTML, CSS
 ```
-``` Frameworks:      Flask (NMUstudenthousing), customtkinter (ModelMaster GUI)  ```
-``` ML Libraries:    scikit-learn, pandas, matplotlib, numpy  ```
-``` GUI Frameworks:  tkinter, customtkinter  ```
-``` Tools & Stuff:   Git, VSCode, SQLite, Postman, ChatGPT, pickle  ```
-```Currently into:  AI ✨ | Backend 🚀 | Web Dev 🌐 | Debugging under pressure 💥  ```
+```
+Frameworks:      Flask (NMUstudenthousing), customtkinter (ModelMaster GUI)
+```
+``` 
+ML Libraries:    scikit-learn, pandas, matplotlib, numpy
+```
+``` 
+GUI Frameworks:  tkinter, customtkinter
+```
+``` 
+Tools & Stuff:   Git, VSCode, SQLite, Postman, ChatGPT, pickle
+```
+```
+Currently into:  AI ✨ | Backend 🚀 | Web Dev 🌐 | Debugging under pressure 💥
+```
 
 
 ---
