@@ -1,4 +1,4 @@
-## 👋 Hey, I’m Youssef Yasser
+## 👋 Hola mi amigo, soy Youssef Yasser
 
 > “Runs on coffee, AI models, and sudden bursts of motivation at 2 AM.”
 
