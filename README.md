@@ -28,7 +28,7 @@ GUI Frameworks:  tkinter, customtkinter
 Tools & Stuff:   Git, VSCode, SQLite, Postman, ChatGPT, pickle
 ```
 ```
-Currently into:  AI ✨ | Backend 🚀 | Web Dev 🌐 | Debugging under pressure 💥
+Currently into:  AI ✨ | Backend 🚀 | Web Dev 🌐 | Debugging under pressure 💥 | Crying over bugs 😭
 ```
 
 
