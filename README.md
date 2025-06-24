@@ -30,7 +30,7 @@ Currently into:  AI | Backend | Web Dev | Debugging under pressure | Crying over
 
 ### 🔭 Currently:
 - Focusing on graduating
-- Learning 🔥 LLMs, clustering, and reinforcement learning.
+- Learning LLMs, clustering, and reinforcement learning.
 - Working on a super secret bot (it’s not sentient… yet).
 - Trying to figure out if I’m a night owl or just a procrastinator.
 
