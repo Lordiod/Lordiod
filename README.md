@@ -15,7 +15,7 @@
 ```
 Languages:       Python, JavaScript, HTML, CSS, C++, C#
 
-Frameworks:      Flask (NMUstudenthousing), customtkinter (ModelMaster GUI)
+Frameworks:      Flask , Customtkinter , Tensorflow , Fastapi
 
 ML Libraries:    scikit-learn, pandas, matplotlib, numpy
 
