@@ -52,5 +52,3 @@ Currently into:  AI | Backend | Web Dev | Crying over bugs | Debugging under pre
 ```bash
 git commit -m "final_final_real_final_v2_FIXED"
 ```
-
----
