@@ -54,14 +54,4 @@ git commit -m "final_final_real_final_v2_FIXED"
 ```
 
 ---
-
-<!-- Choose one of these profile view counters: -->
-
-<!-- Option 1: Shields.io - Clean & customizable -->
 ![Profile Views](https://img.shields.io/github/followers/Lordiod?label=Profile%20Views&color=blue&style=for-the-badge)
-
-<!-- Option 2: Visitor Badge - Minimalist design -->
-![Profile Views](https://visitor-badge.laobi.icu/badge?page_id=Lordiod.Lordiod)
-
-<!-- Option 3: Custom GitHub Profile Views with animations -->
-![Profile Views](https://profile-counter.glitch.me/Lordiod/count.svg)
