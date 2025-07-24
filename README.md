@@ -54,4 +54,3 @@ git commit -m "final_final_real_final_v2_FIXED"
 ```
 
 ---
-![Profile Views](https://img.shields.io/github/followers/Lordiod?label=Profile%20Views&color=blue&style=for-the-badge)
