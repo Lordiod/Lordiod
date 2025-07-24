@@ -1,11 +1,12 @@
 ## 👋 Hola mi amigo, soy Youssef Yasser
 
-> “Runs on coffee, AI models, and sudden bursts of motivation at 2 AM.”
+> "Runs on coffee, AI models, and sudden bursts of motivation at 2 AM."
 
 ### 🧠 About Me:
--  AIE student with a passion for making stuff that sometimes works.
+-  AI Engineering student at New Mansoura University (2021-2026)
 -  Building bots, breaking things, and occasionally writing decent code.
 -  Obsessed with AI, backend dev, and understanding why my code worked.
+-  Applying ML algorithms to solve real-world problems that sometimes work.
 -  I also Google things I literally just typed. Twice. For safety.
 
 ---
@@ -13,26 +14,28 @@
 ### ⚙️ Tech Stack
 
 ```
-Languages:       Python, JavaScript, HTML, CSS, C++, C#
+Languages:       Python, JavaScript, HTML, CSS, C++, C#, TypeScript
 
-Frameworks:      Flask , Customtkinter , Tensorflow , Fastapi
+Frameworks:      Flask, Next.js, React, FastAPI, TensorFlow, Keras
 
-ML Libraries:    scikit-learn, pandas, matplotlib, numpy
+ML Libraries:    scikit-learn, pandas, matplotlib, numpy, OpenCV, Pillow
 
-GUI Frameworks:  tkinter, customtkinter
+UI Frameworks:   Tkinter, CustomTkinter, Tailwind CSS, Bootstrap
 
-Tools & Stuff:   Git, VSCode, SQLite, Postman, ChatGPT, pickle
+Databases:       SQLite, Supabase
 
-Currently into:  AI | Backend | Web Dev | Debugging under pressure | Crying over bugs
+Tools & Stuff:   Git, VSCode, Postman, ESLint, Pickle
+
+Currently into:  AI | Backend | Web Dev | Crying over bugs | Debugging under pressure
 ```
 
 ---
 
 ### 🔭 Currently:
 - Focusing on graduating
-- Learning LLMs, clustering, and reinforcement learning.
-- Working on a super secret bot (it’s not sentient… yet).
-- Trying to figure out if I’m a night owl or just a procrastinator.
+- Advancing ML skills through specializations
+- Building AI applications for real-world problems
+- Trying to figure out if I'm a night owl or just a procrastinator
 
 ---
 
@@ -52,4 +55,13 @@ git commit -m "final_final_real_final_v2_FIXED"
 
 ---
 
-![Profile Views](https://komarev.com/ghpvc/?username=Lordiod&color=blue)
+<!-- Choose one of these profile view counters: -->
+
+<!-- Option 1: Shields.io - Clean & customizable -->
+![Profile Views](https://img.shields.io/github/followers/Lordiod?label=Profile%20Views&color=blue&style=for-the-badge)
+
+<!-- Option 2: Visitor Badge - Minimalist design -->
+![Profile Views](https://visitor-badge.laobi.icu/badge?page_id=Lordiod.Lordiod)
+
+<!-- Option 3: Custom GitHub Profile Views with animations -->
+![Profile Views](https://profile-counter.glitch.me/Lordiod/count.svg)
