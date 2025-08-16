@@ -41,7 +41,7 @@ Currently into:  AI | Backend | Web Dev | Crying over bugs | Debugging under pre
 
 ### 📫 Contact Me:
 - Email: `yyyabed123@gmail.com`
-- LinkedIn: [Youssef Yasser](https://www.linkedin.com/in/youssef-yasser-aa1a21264)
+- LinkedIn: [Youssef Yasser](https://www.linkedin.com/in/youssef-yasser-abed/)
 - Discord: `lildiabloh`
 - Status: Probably online, definitely distracted.
 
