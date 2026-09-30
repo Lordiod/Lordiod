@@ -1,9 +1,28 @@
-"""Reduce redundant SVG keyframes while preserving the Breakout simulation."""
+"""Compress SVG keyframes without smoothing away ball or paddle turns."""
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
 NS = "http://www.w3.org/2000/svg"
 ET.register_namespace("", NS)
+
+def motion_indices(values, tolerance=.04):
+    """Keep a piecewise linear path within .04 pixels of every original frame."""
+    keep = {0, len(values) - 1}
+    pending = [(0, len(values) - 1)]
+    while pending:
+        first, last = pending.pop()
+        if last - first < 2:
+            continue
+        slope = (values[last] - values[first]) / (last - first)
+        worst, error = first, tolerance
+        for i in range(first + 1, last):
+            distance = abs(values[i] - (values[first] + slope * (i - first)))
+            if distance > error:
+                worst, error = i, distance
+        if worst != first:
+            keep.add(worst)
+            pending.extend(((first, worst), (worst, last)))
+    return sorted(keep)
 
 for path in Path("dist").glob("*.svg"):
     original_size = path.stat().st_size
@@ -13,19 +32,16 @@ for path in Path("dist").glob("*.svg"):
         count = len(values)
         if count < 2:
             continue
-        attribute = animation.get("attributeName")
-        if attribute in {"fill", "opacity"}:
+        if animation.get("attributeName") in {"fill", "opacity"}:
             indices = [0] + [i for i in range(1, count) if values[i] != values[i - 1]]
             if indices[-1] != count - 1:
                 indices.append(count - 1)
             animation.set("calcMode", "discrete")
             selected = [values[i] for i in indices]
         else:
-            # Keep ten motion samples per second, with linear interpolation.
-            indices = list(range(0, count, 6))
-            if indices[-1] != count - 1:
-                indices.append(count - 1)
-            selected = [str(round(float(values[i]), 2)) for i in indices]
+            coordinates = list(map(float, values))
+            indices = motion_indices(coordinates)
+            selected = [str(round(coordinates[i], 3)) for i in indices]
             animation.set("calcMode", "linear")
         animation.set("values", ";".join(selected))
         animation.set("keyTimes", ";".join(

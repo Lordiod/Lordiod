@@ -41,9 +41,9 @@ def style(path):
     surface = add(defs, "linearGradient", id="arcadeSurface", x1="0", y1="0", x2="1", y2="1")
     add(surface, "stop", offset="0%", stop_color=panel)
     add(surface, "stop", offset="100%", stop_color=bg)
-    colors = [("#173b2b", "#122e26"), ("#1b5838", "#1b5838"),
-              ("#248347", "#248347"), ("#31b951", "#31b951"),
-              ("#53e66b", "#53e66b")]
+    colors = [("#161f26", "#161f26"), ("#1e7543", "#1e7543"),
+              ("#2ca34f", "#2ca34f"), ("#3ecc5c", "#3ecc5c"),
+              ("#61ef78", "#61ef78")]
     for index, (top, bottom) in enumerate(colors):
         gradient = add(defs, "linearGradient", id=f"brick{index}", x1="0", y1="0", x2="0", y2="1")
         add(gradient, "stop", offset="0%", stop_color=top)
@@ -90,13 +90,13 @@ def style(path):
         "#161b22": 0, "#01311f": 1, "#034525": 2, "#0f6d31": 3, "#00c647": 4,
     }
     animations = list(arena.iter("{" + NS + "}animate"))
-    duration = float(animations[0].get("dur").removesuffix("s")) / 3
+    duration = float(animations[0].get("dur").removesuffix("s")) * 1.15
     for animation in animations:
         animation.set("dur", f"{duration:.3f}s")
         if animation.get("attributeName") == "fill":
             values = animation.get("values").split(";")
             animation.set("values", ";".join(
-                f"url(#brick{color_levels[value]})" if value in color_levels else value
+                colors[color_levels[value]][0] if value in color_levels else value
                 for value in values))
     blocks = [element for element in arena if element.get("id", "").startswith("block-")]
     for block in blocks:
@@ -105,7 +105,7 @@ def style(path):
         block.set("width", "13")
         block.set("height", "13")
         level = color_levels.get(block.get("fill"), 0)
-        block.set("fill", f"url(#brick{level})")
+        block.set("fill", colors[level][0])
         block.set("stroke", colors[level][0])
         block.set("stroke-width", "0")
         opacity = next((a for a in block if a.get("attributeName") == "opacity"), None)
@@ -118,7 +118,7 @@ def style(path):
             continue
         # Small sparks appear only when the corresponding contribution brick breaks.
         x, y = float(block.get("x")) + 5.5, float(block.get("y")) + 5.5
-        end = min(hit + .006, .999999)
+        end = min(hit + .45 / duration, .999999)
         keys = f"0;{max(0.000001, hit - .000001):.8f};{hit:.8f};{end:.8f};1"
         for dx, dy in [(-12, -10), (13, -7), (3, 15)]:
             spark = add(arena, "rect", x=x, y=y, width="3", height="3", rx=".5",
@@ -156,7 +156,13 @@ def style(path):
             source = next(a for a in ball if a.get("attributeName") == attribute)
             target = next(a for a in trail if a.get("attributeName") == attribute)
             values = source.get("values").split(";")
-            target.set("values", ";".join(values[max(0, i - offset)] for i in range(len(values))))
+            times = list(map(float, source.get("keyTimes").split(";")))
+            delay = offset * .035 / duration
+            shifted = [(0.0, values[0])]
+            shifted.extend((t + delay, value) for t, value in zip(times, values) if t + delay < 1)
+            shifted.append((1.0, values[-1]))
+            target.set("values", ";".join(value for _, value in shifted))
+            target.set("keyTimes", ";".join(f"{t:.8f}" for t, _ in shifted))
     for element in list(arena):
         if element.tag == "{" + NS + "}style":
             arena.remove(element)
