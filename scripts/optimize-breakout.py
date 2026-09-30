@@ -8,7 +8,7 @@ ET.register_namespace("", NS)
 for path in Path("dist").glob("*.svg"):
     original_size = path.stat().st_size
     root = ET.parse(path).getroot()
-    for animation in root.iter(f"{NS and '{' + NS + '}'}animate"):
+    for animation in root.iter("{" + NS + "}animate"):
         values = animation.get("values", "").split(";")
         count = len(values)
         if count < 2:

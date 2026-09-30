@@ -9,6 +9,7 @@ on:
       - main
     paths:
       - ".github/workflows/breakout.yml"
+      - "scripts/optimize-breakout.py"
 
 concurrency:
   group: contribution-animation
@@ -34,7 +35,9 @@ jobs:
           path: profile
 
       - name: Optimize animation size
-        run: python3 profile/scripts/optimize-breakout.py
+        run: |
+          sudo chown -R "$(id -u):$(id -g)" dist
+          python3 profile/scripts/optimize-breakout.py
 
       - name: Publish animations to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
