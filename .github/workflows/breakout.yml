@@ -42,22 +42,13 @@ jobs:
       - name: Configure active-day collisions and 120 Hz simulation
         run: python3 profile/scripts/configure-breakout.py
 
-      - name: Install and build generator
-        working-directory: breek
-        run: |
-          bun install --frozen-lockfile --ignore-scripts
-          bun run build:github-user-contribution
-          bun run build:solver
-          bun run build:svg-creator
-          bun run build:action
-
       - name: Verify empty days have no collision bricks
         working-directory: breek
         run: |
           bun -e 'import {createGameBoard} from "./packages/solver/src/gameBoard.ts"; const board=createGameBoard([{x:0,y:0,date:"2026-01-01",count:0,level:0},{x:1,y:0,date:"2026-01-02",count:3,level:2}]); if(board.blocks.length!==1||board.blocks[0].x!==16) throw new Error("Empty days must never become bricks"); console.log("Active-day collision check passed");'
 
       - name: Generate contribution animations
-        run: bun breek/packages/action/dist/index.js
+        run: bun profile/scripts/generate-breakout.ts
         env:
           INPUT_GITHUB_USER_NAME: ${{ github.repository_owner }}
           INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -29,3 +29,21 @@ replace(root / "packages/commons/index.ts",
         "frameDuration: 16, // ~60 fps", "frameDuration: 1000 / 120, // 120 Hz simulation")
 replace(root / "packages/svg-creator/src/index.ts",
         "frames.length / 60; // 60 fps", "frames.length / 120; // 120 Hz motion timeline")
+
+# Resolve workspace imports directly to pinned source; no package install is needed.
+import os
+modules = {
+    "@breek/commons": root / "packages/commons/index.ts",
+    "@breek/solver": root / "packages/solver/src/index.ts",
+    "@breek/svg-creator": root / "packages/svg-creator/src/index.ts",
+    "@breek/github-user-contribution": root / "packages/github-user-contribution/src/index.ts",
+}
+for package in ("solver", "svg-creator", "github-user-contribution"):
+    for path in (root / "packages" / package / "src").glob("*.ts"):
+        text = path.read_text()
+        for name, target in modules.items():
+            relative = os.path.relpath(target, path.parent).replace(os.sep, "/")
+            if not relative.startswith("."):
+                relative = "./" + relative
+            text = text.replace(f'"{name}"', f'"{relative}"')
+        path.write_text(text)
