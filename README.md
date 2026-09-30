@@ -55,12 +55,12 @@ I build AI systems that actually work and full-stack apps that don't fall apart.
 
 ---
 
-##  Contribution Breakout
+##  Contribution Arcade
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Lordiod/Lordiod/output/github-contribution-grid-breek-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Lordiod/Lordiod/output/github-contribution-grid-breek.svg">
-  <img alt="Breakout animation of my GitHub contributions" src="https://raw.githubusercontent.com/Lordiod/Lordiod/output/github-contribution-grid-breek.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Lordiod/Lordiod/output/github-contribution-grid-breek-dark.svg?style=arcade">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Lordiod/Lordiod/output/github-contribution-grid-breek.svg?style=arcade">
+  <img alt="Breakout animation of my GitHub contributions" src="https://raw.githubusercontent.com/Lordiod/Lordiod/output/github-contribution-grid-breek.svg?style=arcade">
 </picture>
 
 ---
