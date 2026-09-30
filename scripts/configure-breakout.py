@@ -16,7 +16,7 @@ replace(root / "packages/solver/src/gameBoard.ts",
         "// The calendar can include a partial 53rd week.")
 replace(root / "packages/solver/src/gameBoard.ts",
         "export function createGameBoard(contributionData: Cell[]): GameBoard {",
-        "export function createGameBoard(contributionData: Cell[]): GameBoard {\\n  const BLOCKS_PER_ROW = Math.max(1, ...contributionData.map(cell => cell.x + 1));")
+        "export function createGameBoard(contributionData: Cell[]): GameBoard {\n  const BLOCKS_PER_ROW = Math.max(1, ...contributionData.map(cell => cell.x + 1));")
 replace(root / "packages/commons/index.ts",
         "frameDuration: 16, // ~60 fps", "frameDuration: 1000 / 120, // 120 Hz simulation")
 replace(root / "packages/commons/index.ts",
