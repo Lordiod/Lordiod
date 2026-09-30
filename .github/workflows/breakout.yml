@@ -5,12 +5,10 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
       - ".github/workflows/breakout.yml"
-      - "scripts/optimize-breakout.py"
-      - "scripts/style-breakout.py"
+      - "scripts/**"
 
 concurrency:
   group: contribution-animation
@@ -19,30 +17,80 @@ concurrency:
 jobs:
   generate:
     permissions:
-      contents: write
+      contents: read
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Generate light and dark Breakout animations
-        uses: cherninlab/breek@a0158b528cb638015755dbedff79475d98fb9963 # v1.0.0
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          svg_out_path: dist/github-contribution-grid-breek.svg
-          svg_dark_out_path: dist/github-contribution-grid-breek-dark.svg
-
-      - name: Check out SVG optimizer
+      - name: Check out profile tools
         uses: actions/checkout@v4
         with:
           path: profile
 
-      - name: Optimize animation size
+      - name: Check out pinned Breakout source
+        uses: actions/checkout@v4
+        with:
+          repository: cherninlab/breek
+          ref: a0158b528cb638015755dbedff79475d98fb9963
+          path: breek
+          persist-credentials: false
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.1.38"
+
+      - name: Configure active-day collisions and 120 Hz simulation
+        run: python3 profile/scripts/configure-breakout.py
+
+      - name: Install and build generator
+        working-directory: breek
         run: |
-          sudo chown -R "$(id -u):$(id -g)" dist
+          bun install --frozen-lockfile --ignore-scripts
+          bun run build:github-user-contribution
+          bun run build:solver
+          bun run build:svg-creator
+          bun run build:action
+
+      - name: Verify empty days have no collision bricks
+        working-directory: breek
+        run: |
+          bun -e 'import {createGameBoard} from "./packages/solver/src/gameBoard.ts"; const board=createGameBoard([{x:0,y:0,date:"2026-01-01",count:0,level:0},{x:1,y:0,date:"2026-01-02",count:3,level:2}]); if(board.blocks.length!==1||board.blocks[0].x!==16) throw new Error("Empty days must never become bricks"); console.log("Active-day collision check passed");'
+
+      - name: Generate contribution animations
+        run: bun breek/packages/action/dist/index.js
+        env:
+          INPUT_GITHUB_USER_NAME: ${{ github.repository_owner }}
+          INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_SVG_OUT_PATH: dist/github-contribution-grid-breek.svg
+          INPUT_SVG_DARK_OUT_PATH: dist/github-contribution-grid-breek-dark.svg
+
+      - name: Optimize and style animations
+        run: |
           python3 profile/scripts/optimize-breakout.py
           python3 profile/scripts/style-breakout.py
 
+      - name: Upload finished animations
+        uses: actions/upload-artifact@v4
+        with:
+          name: contribution-animation
+          path: dist/*.svg
+          retention-days: 1
+
+  publish:
+    needs: generate
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Download finished animations
+        uses: actions/download-artifact@v4
+        with:
+          name: contribution-animation
+          path: dist
+
       - name: Publish animations to output branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
+        uses: crazy-max/ghaction-github-pages@c0d7ff0487ee0415efb7f32dab10ea880330b1dd # v3.1.0
         with:
           target_branch: output
           build_dir: dist
