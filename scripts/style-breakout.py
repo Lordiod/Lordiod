@@ -27,7 +27,7 @@ def style(path):
     dark = "dark" in path.name
     bg, panel, text, muted, border = "#0a0e12", "#0d1217", "#e6edf3", "#697681", "#202830"
     def map_y(y):
-        return y if y <= 112 else 112 + (y - 112) * .4
+        return y # Physics and artwork use identical coordinates.
     total_width, total_height = width + 64, map_y(height) + 116
     root.set("viewBox", f"0 0 {total_width:g} {total_height:g}")
     root.set("width", f"{total_width:g}")

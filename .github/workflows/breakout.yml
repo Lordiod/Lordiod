@@ -47,6 +47,9 @@ jobs:
         run: |
           bun -e 'import {createGameBoard} from "./packages/solver/src/gameBoard.ts"; const board=createGameBoard([{x:0,y:0,date:"2026-01-01",count:0,level:0},{x:1,y:0,date:"2026-01-02",count:3,level:2}]); if(board.blocks.length!==1||board.blocks[0].x!==16) throw new Error("Empty days must never become bricks"); console.log("Active-day collision check passed");'
 
+      - name: Verify collision and full-calendar physics
+        run: bun profile/scripts/test-breakout-physics.mjs
+
       - name: Generate contribution animations
         run: bun profile/scripts/generate-breakout.ts
         env:
