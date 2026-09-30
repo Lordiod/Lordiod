@@ -28,6 +28,14 @@ jobs:
           svg_out_path: dist/github-contribution-grid-breek.svg
           svg_dark_out_path: dist/github-contribution-grid-breek-dark.svg
 
+      - name: Check out SVG optimizer
+        uses: actions/checkout@v4
+        with:
+          path: profile
+
+      - name: Optimize animation size
+        run: python3 profile/scripts/optimize-breakout.py
+
       - name: Publish animations to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
