@@ -79,7 +79,7 @@ def style(path):
               32 + index * (width - 28) / 12, 91, 10, muted)
     arena = add(root, "g", transform="translate(32 100)")
     for x in range(53):
-        for y in range(12):
+        for y in range(7):
             add(arena, "rect", x=x * 16 + 1, y=y * 16 + 1,
                 width="13", height="13", rx="2", fill="#141b21", opacity=".8")
     for child in old_children:
